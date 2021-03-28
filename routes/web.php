@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Cowsayphp\Farm;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/cowsay', function() {
+    $cow = Farm::create(\Cowsayphp\Farm\Cow::class);
+    return '<pre>'.$cow->say("Ohmg I'm a cow!").'</pre>';
 });
